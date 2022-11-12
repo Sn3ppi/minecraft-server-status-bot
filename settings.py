@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-
-TOKEN = os.getenv("BOT_TOKEN")
-USERNAME = os.getenv("BOT_USERNAME")
-IPADDR = os.getenv("IPADDR")
+load_dotenv(".env")
+TOKEN = os.environ.get("BOT_TOKEN")
+USERNAME = os.environ.get("BOT_USERNAME")
+IPADDR = os.environ.get("IPADDR")
