@@ -16,7 +16,7 @@ server_data = {}
 server_data["online"] = False
 
 
-def get_server_data(): #постоянное получение информации о сервере
+def get_server_data() -> None: #постоянное получение информации о сервере
     global server_data
     while True:
         server_data["last_update"] = datetime.datetime.now().strftime("%a %d %b %Y %H:%M:%S")
@@ -40,9 +40,9 @@ def get_server_data(): #постоянное получение информац
         time.sleep(1)
 
 
-def get_players_list(): #парсинг информации об игроках
+def get_players_list() -> str: #парсинг информации об игроках
     return server_messages.players(server_data) if server_data["player_count"] > 0 else server_messages.no_players()
 
 
-def parse_data(): #парсинг ВСЕЙ информации 
+def parse_data() -> str: #парсинг ВСЕЙ информации 
     return server_messages.server_on(server_data, get_players_list()) if server_data["online"] else server_messages.server_off(server_data)

@@ -1,9 +1,9 @@
 import settings
 
 
-class ServerMessages():
+class ServerMessages:
 
-    def help(self):
+    def help(self) -> str:
         return """
 ℹ️ Бот для отслеживания онлайна на сервере @dreammita.
 ℹ️ Мои команды:
@@ -11,13 +11,13 @@ class ServerMessages():
 /status - проверить онлайн
 ℹ️ Код: https://github.com/Sn3ppi/dreammita-status-bot"""
 
-    def server_off(self, server_data):
+    def server_off(self, server_data: str) -> str:
         return f"""
 🕑 <b>Последнее обновление</b>: {server_data["last_update"]}
 ℹ️ <b>Состояние</b>: выключен ❌
 🖥 <b>IP</b>: {settings.IPADDR}"""
 
-    def server_on(self, server_data, players):
+    def server_on(self, server_data: str, players: str) -> str:
         return f"""
 🕑 <b>Последнее обновление</b>: {server_data["last_update"]}
 ℹ️ <b>Состояние</b>: включен ✅
@@ -29,17 +29,17 @@ class ServerMessages():
 👥<b>Игроки</b>:
 {players}"""
 
-    def no_players(self):
+    def no_players(self) -> str:
         return "На сервере сейчас никого нет."
 
-    def players(self, server_data):
+    def players(self, server_data: str) -> str:
         return "\n".join(player for player in server_data["players"])
 
 
 class Errors:
 
-    def many_clicks(self, count):
+    def many_clicks(self, count: int) -> str:
         return f"Подозрительная активность! Попробуйте через {count} с."
 
-    def server(self, error):
+    def server(self, error: str) -> str:
         return f"Возникла ошибка при получении данных: {error}"
